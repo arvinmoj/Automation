@@ -1,0 +1,19 @@
+- name: Iptables Rules 
+  hosts: all
+  become: true
+  become_method: su
+  gather_facts: false
+  roles:
+    - iptables
+
+  vars_prompt:
+  - name: source
+    prompt: "Enter the source IP address:"
+  - name: port
+    prompt: "Enter the port number:"
+  - name: rule
+    prompt: "Enter the UFW rule (allow/deny) :"
+  - name: protocol
+    prompt: "Enter the protocol (tcp/udp):"
+  - name: comment
+    prompt: "Enter a comment:"

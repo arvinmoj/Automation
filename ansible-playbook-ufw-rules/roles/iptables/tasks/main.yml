@@ -1,0 +1,6 @@
+---
+- name: Include variables
+  include_vars: "variables.yml"
+
+- include_tasks: "iptables.yml"
+  run_once: True

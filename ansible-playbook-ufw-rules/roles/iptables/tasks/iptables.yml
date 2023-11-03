@@ -1,0 +1,3 @@
+---
+- name: Allow traffic
+  ansible.builtin.command: "sudo ufw {{ rule }} from {{ source }} to any port {{ port }} proto {{ protocol }} comment '{{ comment }}'"
