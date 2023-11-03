@@ -1,0 +1,10 @@
+---
+- name: Execute MySQL query
+  community.docker.docker_container_exec:
+        container: paybaar-mysql
+        command: "mysql -u {{ MYSQL_USERNAME }} -p'{{ MYSQL_PASSWORD }}' -e '{{ query }}'"
+  register: query_result
+
+- name: Display query result
+  debug:
+    var: query_result.stdout_lines
