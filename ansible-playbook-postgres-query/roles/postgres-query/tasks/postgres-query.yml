@@ -1,0 +1,22 @@
+---
+- name: Run PostgreSQL Show Databases
+  community.postgresql.postgresql_info:
+    filter:
+      - "!databases"
+  become: true
+  become_user: postgres
+  register: query_result
+
+- name: Run PostgreSQL query
+  community.postgresql.postgresql_query:
+    db: "{{ DATABASE_NAME }}"
+    query: "{{ query }}"
+    # login_user: {{ POSTGRES_USERNAME }}
+    # login_password: {{ POSTGRES_PASSWORD }}
+  become: true
+  become_user: "{{ POSTGRES_USERNAME }}"
+  register: query_result
+
+- name: Display query result
+  ansible.builtin.debug:
+    var: query_result

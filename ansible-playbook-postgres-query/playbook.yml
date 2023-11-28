@@ -1,0 +1,11 @@
+- name: Postgres Query 
+  hosts: all
+  become: true
+  become_method: su
+  gather_facts: false
+  roles:
+    - postgres-query
+
+  vars_prompt:
+  - name: query
+    prompt: "Enter the your query: "

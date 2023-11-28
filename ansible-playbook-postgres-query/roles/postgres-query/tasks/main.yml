@@ -1,0 +1,6 @@
+---
+- name: Include variables
+  include_vars: "variables.yml"
+
+- include_tasks: "postgres-query.yml"
+  run_once: True
